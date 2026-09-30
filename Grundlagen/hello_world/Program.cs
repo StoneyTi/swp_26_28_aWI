@@ -1,214 +1,186 @@
 ﻿Console.WriteLine("Hello World!");
 Console.WriteLine("Write something creative!");
 string userInput = Console.ReadLine();
-Console.WriteLine("You wrote: " + userInput);
+
+// Reversing the input with the method Reverse() and cicle through it with ToArray()
+Console.WriteLine(new string(userInput.Reverse().ToArray()));
 
 
-// ============================================================
-// C#-Datentypen im Überblick
-// ============================================================
+// ===== [C#] Built-in types =====
+// sbyte
+// byte
+// short
+// ushort
+// int
+// uint
+// long
+// ulong
+// nint
+// nuint
+// char
+// float
+// double
+// decimal
+// bool
+// string
+// object
+// dynamic
 
-// ------------------------------------------------------------
-// 1. EINGEBAUTE (BUILT-IN) TYPEN
-// ------------------------------------------------------------
+// ===== [C#] User-defined types =====
+// struct
+// readonly struct
+// ref struct
+// record struct
+// enum
+// tuple (int, string)
+// nullable value type (int?)
+// class
+// record
+// interface
+// delegate
+// array (int[], int[,], int[][])
+// anonymous type
+// nullable reference type (string?)
+// constructed generic type (Foo<int>)
+// type parameter (T)
+// pointer (int*, void*, delegate*<...>)
 
-// --- Werttypen ---
-// sbyte    -> System.SByte     8 Bit mit Vorzeichen
-// byte     -> System.Byte      8 Bit ohne Vorzeichen
-// short    -> System.Int16     16 Bit mit Vorzeichen
-// ushort   -> System.UInt16    16 Bit ohne Vorzeichen
-// int      -> System.Int32     32 Bit mit Vorzeichen
-// uint     -> System.UInt32    32 Bit ohne Vorzeichen
-// long     -> System.Int64     64 Bit mit Vorzeichen
-// ulong    -> System.UInt64    64 Bit ohne Vorzeichen
-// nint     -> System.IntPtr    plattformabhängig (32/64 Bit), mit Vorzeichen
-// nuint    -> System.UIntPtr   plattformabhängig (32/64 Bit), ohne Vorzeichen
-// float    -> System.Single    32-Bit-Gleitkomma
-// double   -> System.Double    64-Bit-Gleitkomma
-// decimal  -> System.Decimal   128 Bit, exakte Dezimalzahl (z. B. Geld)
-// bool     -> System.Boolean   true / false
-// char     -> System.Char      ein UTF-16-Zeichen
+// ===== [C#] Keywords that are not types =====
+// void
+// var
+// lambda
 
-// --- Referenztypen ---
-// string   -> System.String    unveränderlicher Text
-// object   -> System.Object    Basistyp von allem
-// dynamic  ->                  Typprüfung erst zur Laufzeit
+// ===== [.NET] System =====
+// Half (s)
+// Int128 (s)
+// UInt128 (s)
+// DateTime (s)
+// DateTimeOffset (s)
+// TimeSpan (s)
+// DateOnly (s)
+// TimeOnly (s)
+// TimeZoneInfo (c)
+// Guid (s)
+// Uri (c)
+// Version (c)
+// Random (c)
+// Index (s)
+// Range (s)
+// Lazy<T> (c)
+// WeakReference<T> (c)
+// Nullable<T> (s)
+// Type (c)
+// Enum (c)
+// Array (c)
+// Delegate (c)
+// ValueType (c)
+// Exception (c)
+// Tuple<...> (c)
+// ValueTuple<...> (s)
+// Func<...> (d)
+// Action<...> (d)
+// Predicate<T> (d)
+// Span<T> (s)
+// ReadOnlySpan<T> (s)
+// Memory<T> (s)
+// ReadOnlyMemory<T> (s)
+// ArraySegment<T> (s)
 
-// --- Sonstige Schlüsselwörter ---
-// void     kein Rückgabewert
-// var      kein Typ, sondern Typinferenz zur Compilezeit
+// ===== [.NET] System.Numerics =====
+// BigInteger (s)
+// Complex (s)
+// Vector2 (s)
+// Vector3 (s)
+// Vector4 (s)
+// Matrix4x4 (s)
+// Quaternion (s)
+// Vector<T> (s)
 
-// ------------------------------------------------------------
-// 2. SELBST DEFINIERBARE TYPEN
-// ------------------------------------------------------------
+// ===== [.NET] System.Text =====
+// StringBuilder (c)
+// Rune (s)
+// Encoding (c)
+// Regex (c, in System.Text.RegularExpressions)
 
-// --- Werttypen ---
-// struct           eigene Werttypen
-// readonly struct  unveränderlicher Struct
-// ref struct       nur auf dem Stack, z. B. Span<T>
-// record struct    Struct mit Wertsemantik und generierten Members
-// enum             benannte Konstanten (Basis: int, byte usw.)
-// (int, string)    Tupel bzw. ValueTuple<...>
-// T? / Nullable<T> nullbare Werttypen, z. B. int?
+// ===== [.NET] System.Globalization =====
+// CultureInfo (c)
 
-// --- Referenztypen ---
-// class            normale Klassen (auch static, abstract, sealed, partial)
-// record           (record class) Klasse mit Wertvergleich, with-Ausdruck
-// interface        Verträge (Default-Implementierungen seit C# 8)
-// delegate         Methodenzeiger, z. B. Func<>, Action<>, Predicate<>
-// int[]            Array (eindimensional)
-// int[,]           Array (mehrdimensional)
-// int[][]          Array (jagged)
-// new { ... }      anonyme Typen, z. B. new { Name = "x", Alter = 3 }
-// Tuple<...>       Tupel als Klassenvariante
-// Lambda-/Funktionstypen
+// ===== [.NET] System.Collections.Generic =====
+// List<T> (c)
+// LinkedList<T> (c)
+// Dictionary<K,V> (c)
+// SortedDictionary<K,V> (c)
+// SortedList<K,V> (c)
+// HashSet<T> (c)
+// SortedSet<T> (c)
+// Queue<T> (c)
+// Stack<T> (c)
+// PriorityQueue<TElement,TPriority> (c)
+// KeyValuePair<K,V> (s)
+// IEnumerable<T> (i)
+// ICollection<T> (i)
+// IList<T> (i)
+// IDictionary<K,V> (i)
+// IReadOnlyList<T> (i)
+// IReadOnlyCollection<T> (i)
+// ISet<T> (i)
+// IAsyncEnumerable<T> (i)
 
-// --- Zeigertypen (nur in unsafe-Kontext) ---
-// int*
-// void*
-// delegate*<...>   Funktionszeiger
+// ===== [.NET] System.Collections.Concurrent =====
+// ConcurrentDictionary (c)
+// ConcurrentQueue (c)
+// ConcurrentStack (c)
+// ConcurrentBag (c)
+// BlockingCollection (c)
 
-// ------------------------------------------------------------
-// 3. WICHTIGE TYPEN AUS DER BASE CLASS LIBRARY (System.*)
-// ------------------------------------------------------------
+// ===== [.NET] System.Collections.Immutable =====
+// ImmutableArray (s)
+// ImmutableList (c)
+// ImmutableDictionary (c)
+// ImmutableHashSet (c)
 
-// --- Zahlen ---
-// Half             16-Bit-Float
-// Int128
-// UInt128
-// System.Numerics.BigInteger   beliebig große Ganzzahl
-// System.Numerics.Complex
-// System.Numerics.Vector2 / Vector3 / Vector4
-// System.Numerics.Matrix4x4
-// System.Numerics.Quaternion
-// System.Numerics.Vector<T>
+// ===== [.NET] System.Collections.ObjectModel =====
+// ObservableCollection<T> (c)
+// ReadOnlyCollection<T> (c)
+// Collection<T> (c)
 
-// --- Datum und Zeit ---
-// DateTime
-// DateTimeOffset
-// TimeSpan
-// DateOnly
-// TimeOnly
-// TimeZoneInfo
+// ===== [.NET] System.Collections (non-generic) =====
+// ArrayList (c)
+// Hashtable (c)
+// Queue (c)
+// Stack (c)
+// BitArray (c)
+// BitVector32 (s, in System.Collections.Specialized)
 
-// --- Identifikation und Sonstiges ---
-// Guid
-// Uri
-// Version
-// Type
-// Random
-// Index            für ^1
-// Range            für 1..3
-// Enum
-// Array
-// Delegate
-// Exception        (und alle abgeleiteten)
-// Lazy<T>
-// WeakReference<T>
-// Nullable<T>
+// ===== [.NET] System.Threading =====
+// Thread (c)
+// Mutex (c)
+// Semaphore (c)
+// SemaphoreSlim (c)
+// Lock (c)
+// CancellationToken (s)
+// CancellationTokenSource (c)
 
-// --- Text ---
-// StringBuilder
-// Rune
-// Regex
-// Encoding
-// CultureInfo
+// ===== [.NET] System.Threading.Tasks =====
+// Task (c)
+// Task<T> (c)
+// ValueTask (s)
+// ValueTask<T> (s)
 
-// --- Speicher ---
-// Span<T>
-// ReadOnlySpan<T>
-// Memory<T>
-// ReadOnlyMemory<T>
-// ArraySegment<T>
+// ===== [.NET] System.Threading.Channels =====
+// Channel<T> (c)
 
-// ------------------------------------------------------------
-// 4. COLLECTIONS
-// ------------------------------------------------------------
+// ===== [.NET] System.IO =====
+// Stream (c)
+// FileStream (c)
+// MemoryStream (c)
+// File (c)
+// Directory (c)
+// Path (c)
+// StreamReader (c)
+// StreamWriter (c)
+// BinaryReader (c)
+// BinaryWriter (c)
 
-// --- System.Collections.Generic ---
-// List<T>
-// LinkedList<T>
-// Dictionary<K,V>
-// SortedDictionary<K,V>
-// SortedList<K,V>
-// HashSet<T>
-// SortedSet<T>
-// Queue<T>
-// Stack<T>
-// PriorityQueue<TElement,TPriority>
-// KeyValuePair<K,V>
 
-// --- System.Collections.Concurrent (threadsicher) ---
-// ConcurrentDictionary
-// ConcurrentQueue
-// ConcurrentStack
-// ConcurrentBag
-// BlockingCollection
-
-// --- System.Collections.Immutable ---
-// ImmutableArray
-// ImmutableList
-// ImmutableDictionary
-// ImmutableHashSet
-// usw.
-
-// --- System.Collections.ObjectModel ---
-// ObservableCollection<T>
-// ReadOnlyCollection<T>
-// Collection<T>
-
-// --- Sonstige ---
-// BitArray
-// BitVector32
-
-// --- Nicht-generisch (veraltet) ---
-// ArrayList
-// Hashtable
-// Queue
-// Stack
-
-// --- Wichtige Schnittstellen ---
-// IEnumerable<T>
-// ICollection<T>
-// IList<T>
-// IDictionary<K,V>
-// IReadOnlyList<T>
-// IReadOnlyCollection<T>
-// ISet<T>
-
-// ------------------------------------------------------------
-// 5. ASYNCHRONITÄT UND THREADING
-// ------------------------------------------------------------
-// Task
-// Task<T>
-// ValueTask
-// ValueTask<T>
-// CancellationToken
-// CancellationTokenSource
-// Thread
-// Mutex
-// Semaphore
-// SemaphoreSlim
-// Lock
-// IAsyncEnumerable<T>
-// Channel<T>
-
-// ------------------------------------------------------------
-// 6. I/O
-// ------------------------------------------------------------
-// Stream
-// FileStream
-// MemoryStream
-// File
-// Directory
-// Path
-// StreamReader / StreamWriter
-// BinaryReader / BinaryWriter
-
-// ------------------------------------------------------------
-// KURZREGEL: WERT- VS. REFERENZTYP
-// ------------------------------------------------------------
-// Werttypen (struct, enum, numerische Typen, bool, char, DateTime, Guid, Tupel)
-//   -> werden beim Zuweisen kopiert.
-// Referenztypen (class, record, string, Arrays, delegate, interface)
-//   -> werden über eine Referenz geteilt.
+//There are more .NET types but those were the most commonly used ones.
