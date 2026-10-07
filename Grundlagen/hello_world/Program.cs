@@ -1,42 +1,46 @@
-﻿Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("Hello World!");
-Console.WriteLine("Write something creative! (exit to quit)");
-Console.ForegroundColor = ConsoleColor.Red;
-string userInput = Console.ReadLine();
+﻿string GetInputType(string input)
+{
+    if (int.TryParse(input, out _))
+    {
+        return "a number";
+    }
 
-// Reversing the input with the method Reverse() and cycle through it with ToArray()
-Console.WriteLine(new string(userInput.Reverse().ToArray()));
+    if (bool.TryParse(input, out _))
+    {
+        return "a boolean value";
+    }
 
-while (userInput != "exit")
+    if (double.TryParse(input, out _))
+    {
+        return "a double value";
+    }
+
+    return "a string value";
+}
+
+while (true)
 {
     Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("\nWrite something creative! (exit to quit)");
+    Console.WriteLine("Write something creative! (exit to quit)");
     Console.ForegroundColor = ConsoleColor.Red;
-    userInput = Console.ReadLine();
-    Console.ForegroundColor = ConsoleColor.Green;
 
-    if (userInput == "")
+    string? userInput = Console.ReadLine();
+
+    if (userInput == "exit")
+    {
+        break;
+    }
+
+    if (string.IsNullOrWhiteSpace(userInput))
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("Please enter a value!");
+        Console.WriteLine("Please enter valid a value!");
         Console.ResetColor();
         continue;
     }
-    else if (int.TryParse(userInput, out _))
-    {
-        Console.WriteLine("\nYou entered a number!");
-    }
-    else if (bool.TryParse(userInput, out _))
-    {
-        Console.WriteLine("\nYou entered a boolean value!");
-    }
-    else if (double.TryParse(userInput, out _))
-    {
-        Console.WriteLine("\nYou entered a double value!");
-    }
-    else
-    {
-        Console.WriteLine("\nYou entered a string value!");
-    }
-    Console.ResetColor();
+
+    Console.WriteLine(new string(userInput.Reverse().ToArray()));
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"\nYou entered {GetInputType(userInput)}!");
 }
