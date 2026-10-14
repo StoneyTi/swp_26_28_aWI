@@ -1,7 +1,14 @@
-﻿string GetInputType(string input)
+﻿using System.Diagnostics;
+using System.Numerics;
+
+bool isnumber = false;
+string? userInput = null;
+
+string GetInputType(string input)
 {
     if (int.TryParse(input, out _))
     {
+        isnumber = true;
         return "a number";
     }
 
@@ -20,11 +27,13 @@
 
 while (true)
 {
+    isnumber = false;
+
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("Write something creative! (exit to quit)");
     Console.ForegroundColor = ConsoleColor.Red;
 
-    string? userInput = Console.ReadLine();
+    userInput = Console.ReadLine();
 
     if (userInput == "exit")
     {
@@ -34,7 +43,7 @@ while (true)
     if (string.IsNullOrWhiteSpace(userInput))
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("Please enter valid a value!");
+        Console.WriteLine("Please enter a valid value!");
         Console.ResetColor();
         continue;
     }
@@ -43,4 +52,63 @@ while (true)
 
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine($"\nYou entered {GetInputType(userInput)}!");
+
+    if (isnumber)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\nplease select a math operation 1-3");
+        Console.WriteLine("1. Square\n2. Square Root\n3. Factorial");
+
+        int? mathOp = int.Parse(Console.ReadLine());
+
+        var sw = Stopwatch.StartNew();
+        string output = getMathOp(mathOp, userInput);
+        Console.WriteLine(output);
+        sw.Stop();
+
+        Console.WriteLine($"(total: {sw.Elapsed.TotalMilliseconds:F3} ms)");
+        Console.WriteLine(getMathOp(mathOp, userInput));
+
+    }
+}
+
+string getMathOp(int? OpSelect, string? userInput)
+{
+    switch (OpSelect)
+    {
+        case 1:
+            return $"\nthe square of {userInput} is {Square.Calculate(double.Parse(userInput))}\n";
+        case 2:
+            return $"\nthe square root of {userInput} is {Math.Sqrt(double.Parse(userInput))}\n";
+        case 3:
+            var result = Factorial.Calculate(int.Parse(userInput!));
+            if (result == null)
+                return "\ninvalid input: factorial is not defined for negative numbers.\n";
+            return $"\nthe factorial of {userInput} is {result}\n";
+        default:
+            return "\ninvalid selection. Please choose 1, 2, or 3.\n";
+    }
+}
+
+class Factorial
+{
+    public static BigInteger? Calculate(int n)
+    {
+        if (n < 0) return null;
+
+        BigInteger result = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+}
+
+class Square
+{
+    public static double Calculate(double n)
+    {
+        return n * n;
+    }
 }
