@@ -19,6 +19,7 @@ string GetInputType(string input)
 
     if (double.TryParse(input, out _))
     {
+        isnumber = true;
         return "a double value";
     }
 
@@ -67,7 +68,6 @@ while (true)
         sw.Stop();
 
         Console.WriteLine($"(total: {sw.Elapsed.TotalMilliseconds:F3} ms)");
-        Console.WriteLine(getMathOp(mathOp, userInput));
 
     }
 }
@@ -89,26 +89,25 @@ string getMathOp(int? OpSelect, string? userInput)
             return "\ninvalid selection. Please choose 1, 2, or 3.\n";
     }
 }
-
-class Factorial
-{
-    public static BigInteger? Calculate(int n)
+    public class Factorial
     {
-        if (n < 0) return null;
-
-        BigInteger result = 1;
-        for (int i = 2; i <= n; i++)
+        public static BigInteger? Calculate(int n)
         {
-            result *= i;
-        }
-        return result;
-    }
-}
+            if (n < 0) return null;
 
-class Square
-{
-    public static double Calculate(double n)
-    {
-        return n * n;
+            BigInteger result = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
     }
-}
+
+    class Square
+    {
+        public static double Calculate(double n)
+        {
+            return n * n;
+        }
+    }
