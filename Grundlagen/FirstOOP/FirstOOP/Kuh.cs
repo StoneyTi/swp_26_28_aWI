@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstOOP
 {
-    public class Kuh
+    public class Kuh : Tier
     {
         string _name; // private field for the name of the Kuh
         string _colour; // private field for the colour of the Kuh
@@ -22,7 +22,7 @@ namespace FirstOOP
         }
 
         // Constructor for the Kuh class
-        public Kuh(string name, string colour) // impliziert Rückgabewert 
+        public Kuh(string name, string colour) : base("Wiese", "Pflanzen", 100) // impliziert Rückgabewert 
         {
             if (string.IsNullOrEmpty(name)) // check if name is null or empty
             {

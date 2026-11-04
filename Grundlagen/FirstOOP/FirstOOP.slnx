@@ -1,4 +1,5 @@
 <Solution>
+  <Folder Name="/Projektmappenelemente/" />
   <Project Path="FirstOOP/FirstOOP.csproj" />
   <Project Path="KuhTestProjekt/KuhTestProjekt.csproj" Id="d183cb60-bf3e-4f39-a35d-71ed341b6f7a" />
 </Solution>
