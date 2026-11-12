@@ -9,7 +9,7 @@ class Animal { // Basisklasse für Tiere
     } // öffentlicher Getter für den Namen des Tieres
 
     public makeSound() { // Methode, die den Laut des Tieres zurückgibt
-        console.log("Animal sound");
+        return "Animal sound";
     }
 
     public get Birthdate() { return this._birthdate; }
@@ -28,7 +28,7 @@ class Animal { // Basisklasse für Tiere
 
 class Cow extends Animal { // Unterklasse von Animal
     public makeSound() { // Überschreibt!!! die Methode makeSound() der Basisklasse
-        console.log("Moo");
+        return "Moo";
     }
 }
 
