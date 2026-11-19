@@ -14,7 +14,11 @@ class Animal { // Basisklasse für Tiere
 
     public get Birthdate() { return this._birthdate; }
     public set Birthdate(value: Date) { this._birthdate = value; }
-
+    public get Age() {
+        let today = new Date();
+        let age = today.getFullYear() - this._birthdate.getFullYear();
+        return age;
+    }
     public get Color() { return this._color; }
     public set Color(value: string) { this._color = value; }
 
@@ -49,3 +53,4 @@ console.log(myCat.Name);
 console.log(myCat.Color);
 console.log(myCat.Birthdate);
 console.log(myCat.makeSound());
+console.log(myCow.Age);
