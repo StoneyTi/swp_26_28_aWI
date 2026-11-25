@@ -1,31 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace FirstOOP
+public class Animal // Basisklasse für Tiere
 {
-    public class Tier
+    private string _name;
+    private string _color;
+    private DateTime _birthdate;
+
+    public string Name // öffentlicher Getter für den Namen des Tieres
     {
-        private string lebensraum;
-        private string ernaehrung;
-
-        public int Gesundheit { get; set; }
-
-        public Tier(string lebensraum, string ernaehrung, int gesundheit)
+        get
         {
-            this.lebensraum = lebensraum;
-            this.ernaehrung = ernaehrung;
-            Gesundheit = gesundheit;
+            string myLocalVar = "myLocalVar";
+            return _name;
         }
+    }
 
-        public string GetLebensraum()
-        {
-            return lebensraum;
-        }
+    public DateTime Birthdate
+    {
+        get { return _birthdate; }
+        set { _birthdate = value; }
+    }
 
-        public string GetErnaehrung()
+    public int Age
+    {
+        get
         {
-            return ernaehrung;
+            DateTime today = DateTime.Today;
+            int age = today.Year - _birthdate.Year;
+            return age;
         }
+    }
+
+    public string Color
+    {
+        get { return _color; }
+        set { _color = value; }
+    }
+
+    public Animal(string name, string color, DateTime birthdate) // Konstruktor
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Name darf nicht leer sein.", nameof(name));
+
+        if (string.IsNullOrWhiteSpace(color))
+            throw new ArgumentException("Farbe darf nicht leer sein.", nameof(color));
+
+        string myLocalVar = "myLocalVar";
+        _name = name;
+        _color = color;
+        _birthdate = birthdate;
+    }
+    public Animal(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Name darf nicht leer sein.", nameof(name));
+        _name = name;
+    }
+    public virtual string MakeSound() // Überschreibt die Methode MakeSound() der Basisklasse
+    {
+        return "Animal Sound";
+    }
+    public virtual string MakeSound(int duration)
+    {
+        string result = "";
+        for (int i = 0; i < duration; i++)
+        {
+            result += "Animal Sound\n";
+        }
+        return result;
     }
 }
