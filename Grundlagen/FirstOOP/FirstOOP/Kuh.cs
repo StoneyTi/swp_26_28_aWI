@@ -4,36 +4,35 @@ using System.Text;
 
 namespace FirstOOP
 {
-    public class Kuh : Tier
+    public class Cow : Animal // Unterklasse von Animal
     {
-        string _name; // private field for the name of the Kuh
-        string _colour; // private field for the colour of the Kuh
+        public Cow(string name, string color, DateTime birthdate)
+            : base(name, color, birthdate) { }
 
-        public string Name // public property for the name of the Kuh
+        public string MakeSound() // Überschreibt die Methode MakeSound() der Basisklasse
         {
-            get { return _name; } // getter for the name
-            set { _name = value; } // setter for the name
+            return "Moo";
+        }
+    }
+
+    public class Cat : Animal
+    {
+        public Cat(string name, string color, DateTime birthdate)
+            : base(name, color, birthdate) { }
+
+        public override string MakeSound()
+        {
+            return "Meow";
         }
 
-        public string Colour // public property for the colour of the Kuh
+        public override string MakeSound(int duration)
         {
-            get { return _colour; } // getter for the colour
-            set { _colour = value; } // setter for the colour
-        }
-
-        // Constructor for the Kuh class
-        public Kuh(string name, string colour) : base("Wiese", "Pflanzen", 100) // impliziert Rückgabewert 
-        {
-            if (string.IsNullOrEmpty(name)) // check if name is null or empty
+            string result = "";
+            for (int i = 0; i < duration; i++)
             {
-                throw new ArgumentException("Name cannot be null or empty"); // throw exception if name is null or empty
+                result += "Meow\n";
             }
-            if (string.IsNullOrEmpty(colour)) // check if colour is null or empty
-            {
-                throw new ArgumentException("Colour cannot be null or empty"); // throw exception if colour is null or empty
-            }
-            _name = name;
-            _colour = colour;
+            return result;
         }
     }
 }
